@@ -1,4 +1,4 @@
-// Project State Management
+// Project State Management - test
 class ProjectState {
   private listeners: any[] = [];
   private projects: any[] = [];
