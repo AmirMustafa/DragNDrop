@@ -175,6 +175,30 @@ abstract class Component<T extends HTMLElement, U extends HTMLElement> {
   abstract renderContent(): void;
 }
 
+// Making ProjectItem reusable
+class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> {
+  private project: Project;
+  constructor(hostId: string, project: Project) {
+    super("single-project", hostId, true, project.id);
+    this.project = project;
+
+    this.configure();
+    this.renderContent();
+  }
+
+  configure() {}
+  renderContent() {
+    this.element.querySelector("h2")!.textContent = "";
+    this.element.querySelector("h3")!.textContent = "";
+    this.element.querySelector("p")!.textContent = "";
+
+    this.element.querySelector("h2")!.textContent = this.project.title;
+    this.element.querySelector("h3")!.textContent =
+      this.project.people.toString();
+    this.element.querySelector("p")!.textContent = this.project.description;
+  }
+}
+
 // Project List Class
 class ProjectList extends Component<HTMLDivElement, HTMLElement> {
   assignedProject: Project[];
@@ -195,9 +219,10 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> {
 
     listEl.innerHTML = ""; // to avoid duplicate entry
     for (const prjItem of this.assignedProject) {
-      const listItem = document.createElement("li");
-      listItem.textContent = prjItem.title;
-      listEl.appendChild(listItem);
+      new ProjectItem(this.element.querySelector("ul")!.id, prjItem);
+      // const listItem = document.createElement("li");
+      // listItem.textContent = prjItem.title;
+      // listEl.appendChild(listItem);
     }
   }
 
