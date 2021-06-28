@@ -212,7 +212,9 @@ class ProjectItem
 
   @AutoBind
   dragStartHandler(event: DragEvent) {
-    console.log("Drag Start======>", event);
+    // event.dataTransfer.<name_of_choice> - send data transfer i.e. id
+    event.dataTransfer!.setData("text/plain", this.project.id);
+    event.dataTransfer!.effectAllowed = "move";
   }
 
   dragEndHandler(_event: DragEvent) {
@@ -261,12 +263,20 @@ class ProjectList
   }
 
   @AutoBind
-  dragOverHandler(_event: DragEvent): void {
-    const listEl = this.element.querySelector("ul");
-    listEl?.classList.add("droppable");
+  dragOverHandler(event: DragEvent): void {
+    // Checking if data is sent from dragStartHandler method
+    if (event.dataTransfer?.types[0] === "text/plain") {
+      event.preventDefault(); // prevent default is must to execute drop
+      const listEl = this.element.querySelector("ul");
+      listEl?.classList.add("droppable");
+    }
   }
 
-  dropHandler(_event: DragEvent): void {}
+  dropHandler(event: DragEvent): void {
+    // Receive data transfered i.e. id
+    const id = event.dataTransfer?.getData("text/plain");
+    console.log(id);
+  }
 
   @AutoBind
   dragLeaveHandler(_event: DragEvent): void {
