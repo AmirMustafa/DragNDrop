@@ -231,17 +231,11 @@ class ProjectItem
 }
 
 // Project List Class
-class ProjectList extends Component<HTMLDivElement, HTMLElement> {
+class ProjectList
+  extends Component<HTMLDivElement, HTMLElement>
+  implements DragTarget
+{
   assignedProject: Project[];
-
-  constructor(private type: "active" | "finished") {
-    super("project-list", "app", false, `${type}-projects`);
-
-    this.assignedProject = [];
-
-    this.configure();
-    this.renderContent();
-  }
 
   private renderProjects() {
     const listEl = document.getElementById(
@@ -257,14 +251,34 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> {
     }
   }
 
-  renderContent() {
-    const listId = `${this.type}-project-lists`;
-    this.element.querySelector("ul")!.id = listId;
-    this.element.querySelector("h2")!.textContent =
-      this.type.toUpperCase() + " PROJECTS";
+  constructor(private type: "active" | "finished") {
+    super("project-list", "app", false, `${type}-projects`);
+
+    this.assignedProject = [];
+
+    this.configure();
+    this.renderContent();
+  }
+
+  @AutoBind
+  dragOverHandler(_event: DragEvent): void {
+    const listEl = this.element.querySelector("ul");
+    listEl?.classList.add("droppable");
+  }
+
+  dropHandler(_event: DragEvent): void {}
+
+  @AutoBind
+  dragLeaveHandler(_event: DragEvent): void {
+    const listEl = this.element.querySelector("ul");
+    listEl?.classList.remove("droppable");
   }
 
   configure() {
+    this.element.addEventListener("dragover", this.dragOverHandler);
+    this.element.addEventListener("dragleave", this.dragLeaveHandler);
+    this.element.addEventListener("drop", this.dropHandler);
+
     projectState.addListeners((projects: Project[]) => {
       // filter projects
       const relevantProjects = projects.filter((prj) => {
@@ -277,6 +291,13 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> {
       this.assignedProject = relevantProjects;
       this.renderProjects();
     });
+  }
+
+  renderContent() {
+    const listId = `${this.type}-project-lists`;
+    this.element.querySelector("ul")!.id = listId;
+    this.element.querySelector("h2")!.textContent =
+      this.type.toUpperCase() + " PROJECTS";
   }
 }
 
