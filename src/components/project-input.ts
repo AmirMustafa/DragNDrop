@@ -1,3 +1,4 @@
+// Project Input form handled
 namespace App {
   export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
     titleInputElement: HTMLInputElement;

@@ -1,5 +1,5 @@
+// Base class which is having shared logic - added generics for better type casting
 namespace App {
-  // Base class which is having shared logic - added generics for better type casting
   export abstract class Component<
     T extends HTMLElement,
     U extends HTMLElement

@@ -9,7 +9,7 @@ html {
 body {
   margin: 80px 120px;
   background-image: url("../asset/img/diamond.jpeg");
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 body::before {

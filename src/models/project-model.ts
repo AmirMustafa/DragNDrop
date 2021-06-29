@@ -1,4 +1,4 @@
-// Project Type
+// Handling project status and class
 namespace App {
   export enum ProjectStatus {
     Active,

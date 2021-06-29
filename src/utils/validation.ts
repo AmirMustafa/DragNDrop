@@ -1,5 +1,5 @@
+// Validator
 namespace App {
-  // Validator
   export interface Validatable {
     value: string | number;
     required?: boolean;

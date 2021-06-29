@@ -1,4 +1,4 @@
-// AutoBind Decorator - fixes this pointing issue on submitHandler
+// AutoBind Decorator - fixes this pointer issue on submitHandler
 namespace App {
   export function AutoBind(
     _target: any,

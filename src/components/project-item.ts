@@ -1,4 +1,4 @@
-// Making ProjectItem reusable
+// Individual Project Element handled
 namespace App {
   export class ProjectItem
     extends Component<HTMLUListElement, HTMLLIElement>
