@@ -7,7 +7,19 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: 80px 120px;
+  background-image: url("../asset/img/diamond.jpeg");
+  opacity: 0.8;
+}
+
+body::before {
+  background-image: url("../asset/img/image2.png");
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  opacity: 0.5;
 }
 
 label,
