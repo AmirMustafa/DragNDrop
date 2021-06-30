@@ -1,4 +1,10 @@
 // Listing Section handled
+
+/// <reference path="base-component.ts" />
+/// <reference path="../decorators/autobind.ts" />
+/// <reference path="../state/project-state.ts" />
+/// <reference path="../models/project-model.ts" />
+/// <reference path="../models/drag-drop-interface.ts" />
 namespace App {
   export class ProjectList
     extends Component<HTMLDivElement, HTMLElement>
