@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx webpack serve",
-    "build": "webpack"
+    "build": "webpack --config webpack.config.prod"
   },
   "keywords": [
     "typescript",
@@ -21,5 +21,8 @@
     "webpack": "^5.41.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "clean-webpack-plugin": "^4.0.0-alpha.0"
   }
 }
