@@ -1,11 +1,11 @@
 // Listing Section handled
 
-import Component from "./base-component.js";
-import { AutoBind } from "../decorators/autobind.js";
-import { Project, ProjectStatus } from "../models/project-model.js";
+import Component from "./base-component";
+import { AutoBind } from "../decorators/autobind";
+import { Project, ProjectStatus } from "../models/project-model";
 import { DragTarget } from "../models/drag-drop-interface";
-import { projectState } from "../state/project-state.js";
-import { ProjectItem } from "./project-item.js";
+import { projectState } from "../state/project-state";
+import { ProjectItem } from "./project-item";
 
 export class ProjectList
   extends Component<HTMLDivElement, HTMLElement>
