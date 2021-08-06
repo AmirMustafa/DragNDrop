@@ -5,6 +5,12 @@ A Typescript app which uses rich typescript features - Genertics, Decorators, Ty
 ## Project Overview
 https://www.loom.com/share/c4efb560be1b4a768f9429cb97f925ea 
 
+## Installation
+1. Clone the repository 
+2. npm install
+3. Open three terminals and run the below command - ``` tsc --watch```, ``` npm start ```, ``` npm build ```
+4. Project will open in 8080 port by default i.e. http://localhost:8080/
+
 
 ## Screenshots:
 
